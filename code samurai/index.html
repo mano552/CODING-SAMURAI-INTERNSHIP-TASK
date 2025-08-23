@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">My Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button id="theme-toggle">Toggle Theme</button>
+        </nav>
+    </header>
+
+    <section id="about">
+        <img src="images/profile.jpg" alt="Minahil Samreen" class="profile-pic" onclick="openProfileModal()">
+        <h1>About Me</h1>
+        <p>Hi, I'm Minahil Samreen, a passionate web developer with experience in Power BI, Python, and full-stack development. I enjoy building data-driven projects and creating user-friendly applications.</p>
+    </section>
+
+    <section id="projects">
+        <h1>Projects</h1>
+        <div class="project-container">
+            <div class="project-card">
+                <h3>Pizza Sales Dashboard (Power BI)</h3>
+                <div class="project-images">
+                    <img src="images/dashboard1.png" alt="Pizza Sales Dashboard 1" class="project-img" onclick="openModal(0)">
+                </div>
+                <p>Developed a Power BI dashboard to analyze pizza sales data, visualizing metrics like revenue, order volume, and customer preferences. Features interactive charts and filters.</p>
+                <a href="https://1drv.ms/u/c/881150bdb6d05671/EU0sUNJsh7xHjvUezHsZKXMBg7gFE2AGG1Fl-IoPIXps8g?e=n8w7Sa" class="project-link">View Dashboard</a>
+            </div>
+            <div class="project-card">
+                <h3>Crime Management System (Python)</h3>
+                <div class="project-images">
+                    <img src="images/crime.png" alt="Crime Management System" class="project-img" onclick="openModal(2)">
+                </div>
+                <p>Built a Python-based system to manage crime records, including data entry, retrieval, and reporting functionalities. It is made by using CLI.</p>
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7277741525504016384/" class="project-link">Watch on LinkedIn</a>
+            </div>
+            <div class="project-card">
+                <h3>Expense Tracker App</h3>
+                <div class="project-images">
+                    <img src="images/expense.png" alt="Expense Tracker App" class="project-img" onclick="openModal(4)">
+                </div>
+                <p>A web app to manage personal finances with natural language expense input, budget tracking, and AI-powered spending predictions. Built with Flask, MySQL, and Bootstrap.</p>
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7328099922891726849/" class="project-link">Watch on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1>Contact</h1>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <div class="form-buttons">
+                <button type="submit">Send</button>
+                <button type="reset">Clear</button>
+            </div>
+        </form>
+        <div class="social-links">
+            <a href="https://bit.ly/3Ua8bvd">LinkedIn</a>
+            <a href="https://github.com/mano552">GitHub</a>
+            <a href="https://mail.google.com/mail/u/0/">Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Minahil Samreen. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for Image Preview -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <button class="modal-prev" onclick="changeModalImage(-1)">&#10094;</button>
+        <img class="modal-content" id="modalImage">
+        <button class="modal-next" onclick="changeModalImage(1)">&#10095;</button>
+    </div>
+
+    <!-- Modal for Profile Pic -->
+    <div id="profileModal" class="modal">
+        <span class="close" onclick="closeProfileModal()">&times;</span>
+        <img class="modal-content" id="profileModalImage">
+        <div class="modal-options">
+            <label for="profileUpload" class="change-button">Change Image</label>
+            <input type="file" id="profileUpload" accept="image/*" onchange="previewProfileImage(event)">
+            <button class="delete-button" onclick="deleteProfileImage()">Delete Image</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        (function() {
+            emailjs.init("GVfbYWDYNy-y4TH3_");
+        })();
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.send("service_2o88yx8", "template_ogmi92m", {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            }).then(function(response) {
+                alert('Message sent successfully!');
+                document.getElementById('contact-form').reset();
+            }, function(error) {
+                alert('Failed to send message. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
