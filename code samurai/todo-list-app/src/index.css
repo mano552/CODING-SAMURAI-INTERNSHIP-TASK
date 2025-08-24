@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.app form {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.app input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.app button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.app button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.app button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.task-list li.task-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.task-list li.task-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.task-list li.task-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+.task-list input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.task-list span {
+  flex: 1;
+  color: #333;
+}
+
+.task-list .completed span {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.task-list button {
+  padding: 6px 12px;
+  margin-left: 8px;
+  border-radius: 4px;
+}
+
+.task-list button.edit {
+  background: #eab308;
+}
+
+.task-list button.edit:hover {
+  background: #ca8a04;
+}
+
+.task-list button.delete {
+  background: #ef4444;
+}
+
+.task-list button.delete:hover {
+  background: #dc2626;
+}
+
+.task-list button.save {
+  background: #22c55e;
+}
+
+.task-list button.save:hover {
+  background: #16a34a;
+}
+
+.task-counter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.no-tasks {
+  text-align: center;
+  color: #6b7280;
+}
+
+.clear-completed {
+  width: 100%;
+  padding: 8px;
+  background: #ef4444;
+  color: white;
+  border-radius: 4px;
+}
+
+.clear-completed:hover {
+  background: #dc2626;
+}
